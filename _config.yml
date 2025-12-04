@@ -12,7 +12,7 @@ title                    : "Till Köveker"
 title_separator          : "-"
 name                     : &name "Till Köveker"
 description              : &description "Till Köveker's (Koeveker) academic and professional website."
-url                      : "https://tillkoeveker.github.io" # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
+url                      : https://tillkoeveker.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "tillkoeveker/tillkoeveker.github.io"
 
@@ -21,12 +21,12 @@ repository               : "tillkoeveker/tillkoeveker.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpg"
+  avatar           : "profile.png"
   name             : "Till Köveker"
   pronouns         : "he/his"  
   bio              : "Research associate & Phd student"
   location         : #"Earth"
-  employer         : "[DIW Berlin](https://www.diw.de/en/) & [TU Berlin](https://www.tu.berlin/en/)""
+  employer         : "[DIW Berlin](https://www.diw.de/en/) & [TU Berlin](https://www.tu.berlin/en/)"
   uri              : # URL
   email            : "tkoeveker@diw.de" 
 
