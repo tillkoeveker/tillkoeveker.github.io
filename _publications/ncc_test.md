@@ -1,4 +1,3 @@
-
 ---
 title: "Green premiums are a challenge and an opportunity for climate policy design"
 collection: publications
