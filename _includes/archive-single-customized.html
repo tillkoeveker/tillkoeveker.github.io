@@ -13,7 +13,7 @@ Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
   {%- assign url = post.paperurl | default: post.permalink -%}
   <h3 class="archive-title" style="margin-bottom:0.25rem;">
     {%- if url -%}
-      {{ url }}{{ post.title }}</a>
+    <a href="{{ url }}">{{ post.title }}</a>
     {%- else -%}
       {{ post.title }}
     {%- endif -%}
