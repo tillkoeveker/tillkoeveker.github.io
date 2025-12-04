@@ -22,22 +22,22 @@ Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
     {%- endif -%}
   </h3>
 
-  {%- comment -%} Authors line {%- endcomment -%}
+
+  {%- comment -%} Authors + (YEAR) {%- endcomment -%}
+  {%- assign year = post.date | date: "%Y" -%}
   {%- if post.authors -%}
     <div class="archive-authors">
-      {{ post.authors }}
+      {{ post.authors }}{% if year %} ({{ year }}){% endif %}
     </div>
   {%- endif -%}
 
-  {%- comment -%} Venue + year {%- endcomment -%}
-  {%- assign year = post.date | date: "%Y" -%}
-  {%- if post.venue or year -%}
+  {%- comment -%} Venue (year moved to authors) {%- endcomment -%}
+  {%- if post.venue -%}
     <div class="archive-venue" style="color:#777;">
-      {%- if post.venue -%}{{ post.venue }}{%- endif -%}
-      {%- if post.venue and year -%}, {%- endif -%}
-      {{ year }}
+      {{ post.venue }}
     </div>
   {%- endif -%}
+
 
   {%- comment -%} Short description {%- endcomment -%}
   {%- if post.excerpt -%}
@@ -57,16 +57,4 @@ Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
     </div>
   {%- endif -%}
 
-  {%- comment -%} Links row {%- endcomment -%}
-  <div class="archive-links" style="margin-top:0.5rem;">
-    {%- if post.paperurl -%}
-      {{ post.paperurl }}PDF</a>
-    {%- endif -%}
-    {%- if post.code -%}
-      {{ post.code }}Code</a>
-    {%- endif -%}
-    {%- if post.permalink and post.paperurl != post.permalink -%}
-      {{ post.permalink }}Details</a>
-    {%- endif -%}
-  </div>
 </article>
