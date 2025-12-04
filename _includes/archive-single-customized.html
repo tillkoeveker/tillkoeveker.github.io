@@ -1,19 +1,19 @@
 
 {%- comment -%}
-Custom renderer for research items:
-- Title links to external `paperurl` if present; otherwise internal page.
-- Authors allow Markdown/HTML; bold names supported via <strong>.
-- Venue + year shown with proper spacing.
-- Buttons: PDF (paperurl), Code, Details (only if distinct internal page).
+Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
+- Title (linked) + optional status badge
+- Authors (with bold name supported via <strong> in front matter)
+- Venue + year
+- Short description (excerpt)
+- Optional [Media coverage: …] list
+- Links: PDF, Code, etc.
 {%- endcomment -%}
 
 <article class="archive-item">
-  {%- assign has_paperurl = post.paperurl and post.paperurl != "" -%}
-  {%- assign title_href = has_paperurl ? post.paperurl : post.permalink -%}
-
+  {%- assign url = post.paperurl | default: post.permalink -%}
   <h3 class="archive-title" style="margin-bottom:0.25rem;">
-    {%- if title_href -%}
-      {{ title_href }}{{ post.title }}</a>
+    {%- if url -%}
+      {{ url }}{{ post.title }}</a>
     {%- else -%}
       {{ post.title }}
     {%- endif -%}
@@ -22,27 +22,31 @@ Custom renderer for research items:
     {%- endif -%}
   </h3>
 
+  {%- comment -%} Authors line {%- endcomment -%}
   {%- if post.authors -%}
     <div class="archive-authors">
-      {{ post.authors | markdownify | replace: '<p>','' | replace: '</p>','' }}
+      {{ post.authors }}
     </div>
   {%- endif -%}
 
+  {%- comment -%} Venue + year {%- endcomment -%}
   {%- assign year = post.date | date: "%Y" -%}
   {%- if post.venue or year -%}
     <div class="archive-venue" style="color:#777;">
       {%- if post.venue -%}{{ post.venue }}{%- endif -%}
       {%- if post.venue and year -%}, {%- endif -%}
-      {%- if year -%}{{ year }}{%- endif -%}
+      {{ year }}
     </div>
   {%- endif -%}
 
+  {%- comment -%} Short description {%- endcomment -%}
   {%- if post.excerpt -%}
     <div class="archive-excerpt" style="margin-top:0.5rem;">
       {{ post.excerpt }}
     </div>
   {%- endif -%}
 
+  {%- comment -%} Media coverage block (displayed bracketed like the reference) {%- endcomment -%}
   {%- if post.media_coverage and post.media_coverage.size > 0 -%}
     <div class="archive-media" style="margin-top:0.25rem;">
       [Media coverage:
@@ -53,23 +57,16 @@ Custom renderer for research items:
     </div>
   {%- endif -%}
 
-  {%- comment -%}
-  Buttons: show “PDF” if paperurl; “Code” if code; “Details” only if there is an internal page distinct from title link.
-  {%- endcomment -%}
-  {%- assign internal_page = post.permalink -%}
-  {%- assign show_details = internal_page and internal_page != "" and internal_page != title_href -%}
-
-  {%- if has_paperurl or post.code or show_details -%}
-    <div class="archive-links" style="margin-top:0.5rem;">
-      {%- if has_paperurl -%}
-        <a class="btn btn}}PDF</a>
-      {%- endif -%}
-      {%- if post.code -%}
-        {{ post.code }}Code</a>
-      {%- endif -%}
-      {%- if show_details -%}
-        <a class="btn btn--sm"ails</a>
-      {%- endif -%}
-    </div>
-  {%- endif -%}
+  {%- comment -%} Links row {%- endcomment -%}
+  <div class="archive-links" style="margin-top:0.5rem;">
+    {%- if post.paperurl -%}
+      {{ post.paperurl }}PDF</a>
+    {%- endif -%}
+    {%- if post.code -%}
+      {{ post.code }}Code</a>
+    {%- endif -%}
+    {%- if post.permalink and post.paperurl != post.permalink -%}
+      {{ post.permalink }}Details</a>
+    {%- endif -%}
+  </div>
 </article>
