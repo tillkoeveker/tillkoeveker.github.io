@@ -1,0 +1,72 @@
+
+{%- comment -%}
+Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
+- Title (linked) + optional status badge
+- Authors (with bold name supported via <strong> in front matter)
+- Venue + year
+- Short description (excerpt)
+- Optional [Media coverage: …] list
+- Links: PDF, Code, etc.
+{%- endcomment -%}
+
+<article class="archive-item">
+  {%- assign url = post.paperurl | default: post.permalink -%}
+  <h3 class="archive-title" style="margin-bottom:0.25rem;">
+    {%- if url -%}
+      {{ url }}{{ post.title }}</a>
+    {%- else -%}
+      {{ post.title }}
+    {%- endif -%}
+    {%- if post.status_note -%}
+      <span class="label label-default" style="margin-left:0.5rem;">{{ post.status_note }}</span>
+    {%- endif -%}
+  </h3>
+
+  {%- comment -%} Authors line {%- endcomment -%}
+  {%- if post.authors -%}
+    <div class="archive-authors">
+      {{ post.authors }}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Venue + year {%- endcomment -%}
+  {%- assign year = post.date | date: "%Y" -%}
+  {%- if post.venue or year -%}
+    <div class="archive-venue" style="color:#777;">
+      {%- if post.venue -%}{{ post.venue }}{%- endif -%}
+      {%- if post.venue and year -%}, {%- endif -%}
+      {{ year }}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Short description {%- endcomment -%}
+  {%- if post.excerpt -%}
+    <div class="archive-excerpt" style="margin-top:0.5rem;">
+      {{ post.excerpt }}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Media coverage block (displayed bracketed like the reference) {%- endcomment -%}
+  {%- if post.media_coverage and post.media_coverage.size > 0 -%}
+    <div class="archive-media" style="margin-top:0.25rem;">
+      [Media coverage:
+        {%- for m in post.media_coverage -%}
+          {{ m.url }}{{ m.name }}</a>{% unless forloop.last %}, {% endunless %}
+        {%- endfor -%}
+      ]
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Links row {%- endcomment -%}
+  <div class="archive-links" style="margin-top:0.5rem;">
+    {%- if post.paperurl -%}
+      {{ post.paperurl }}PDF</a>
+    {%- endif -%}
+    {%- if post.code -%}
+      {{ post.code }}Code</a>
+    {%- endif -%}
+    {%- if post.permalink and post.paperurl != post.permalink -%}
+      {{ post.permalink }}Details</a>
+    {%- endif -%}
+  </div>
+</article>
