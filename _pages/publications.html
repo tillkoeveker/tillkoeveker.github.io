@@ -6,31 +6,19 @@ author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+  <div class="wordwrap">You can also find my articles on <a href="{{site.authorholar}}my Google Scholar profile</a>.</div>
 {% endif %}
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+<h2>Working Papers</h2><hr />
+{% assign working = site.publications | where: "status", "working-paper" | sort: "date" | reverse %}
+{% for post in working %}
+  {% include publication-item.html post=post show_abstract=true %}
+{% endfor %}
 
-
-
+<h2>Publications</h2><hr />
+{% assign published = site.publications | where: "status", "published" | sort: "date" | reverse %}
+{% for post in published %}
+  {% include publication-item.html post=post show_abstract=false %}
+{% endfor %}
