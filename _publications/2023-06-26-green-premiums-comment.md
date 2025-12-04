@@ -1,7 +1,7 @@
 ---
 title: "Green premiums are a challenge and an opportunity for climate policy design"
 collection: publications
-category: manuscripts
+category: Publications
 permalink: https://www.nature.com/articles/s41558-023-01689-2
 #excerpt: 'Adjusting green public support programmes to green premiums can reduce public spending, yet this is challenged by uncertainty. Underfunding green technologies can delay the green transition, and overfunding them can increase transition costs. Both risks of under- and overfunding can be reduced using responsive adjustments.'
 date: 2023-06-26

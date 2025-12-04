@@ -1,7 +1,7 @@
 ---
 title: "Catalyzing the transition to a climate-neutral industry with carbon contracts for difference"
 collection: publications
-category: manuscripts
+category: Publications
 permalink: https://www.sciencedirect.com/science/article/pii/S2542435124004719
 #excerpt: ''
 date: 2024-12-18
