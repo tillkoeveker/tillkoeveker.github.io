@@ -1,0 +1,40 @@
+
+{%- comment -%}
+Reusable list item for a publication styled like phmrichter.github.io/research.
+Inputs:
+  post          — the publication document
+  show_abstract — boolean; if true, prints "Abstract:" + excerpt.
+{%- endcomment -%}
+
+<article class="pub-item">
+  <h3 class="pub-title">
+    {%- if post.url -%}
+      <a href="{{ post.urlve_url }}{{ post.title }}</a>
+    {%- else -%}
+      {{ post.title }}
+    {%- endif -%}
+  </h3>
+
+  {%- assign year = post.date | date: "%Y" -%}
+
+  <p class="pub-meta">
+    {%- if post.coauthors %}(with {{ post.coauthors }}){% endif -%}
+    {%- if post.venue %}{% if post.coauthors %}, {% endif %}<em>{{ post.venue }}</em>{% endif -%}
+    {%- if post.volume %} {{ post.volume }}{% endif -%}
+    {%- if year %}, {{ year }}{% endif -%}.
+  </p>
+
+  {%- capture links -%}{%- endcapture -%}
+  {%- if post.mendeleyurl or post.paperurl or post.codeurl or post.slidesurl -%}
+    <p class="pub-actions"> 
+      {%- if post.mendeleyurl -%}<a href="{{ post.mendeleyurley Data repository</a>{%- endif -%}
+      {%- if post.paperurl -%}{% if post.mendeleyurl %}; {% endif %}{{ post.paperurl }}WP Version</a>{%- endif -%}
+      {%- if post.codeurl -%}{% if post.mendeleyurl or post.paperurl %}; {% endif %}{{ post.codeurl }}Code</a>{%- endif -%}
+      {%- if post.slidesurl -%}{% if post.mendeleyurl or post.paperurl or post.codeurl %}; {% endif %}{{ post.slidesurl }}Slides</a>{%- endif -%}
+    </p>
+  {%- endif -%}
+
+  {%- if include.show_abstract and post.excerpt -%}
+    <p class="pub-abstract"><strong>Abstract:</strong> {{ post.excerpt | markdownify }}</p>
+  {%- endif -%}
+</article>
