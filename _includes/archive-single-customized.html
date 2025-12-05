@@ -23,20 +23,24 @@ Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
   </h3>
 
 
-  {%- comment -%} Authors + (YEAR) {%- endcomment -%}
-  {%- assign year = post.date | date: "%Y" -%}
+
+  <!-- Authors (one line) -->
   {%- if post.authors -%}
     <div class="archive-authors">
-      {{ post.authors }}{% if year %} ({{ year }}){% endif %}
+      {{ post.authors }}
     </div>
   {%- endif -%}
 
-  {%- comment -%} Venue (year moved to authors) {%- endcomment -%}
-  {%- if post.venue -%}
-    <div class="archive-venue" style="color:#777;">
-      {{ post.venue }}
+  <!-- Year + bold journal/venue on separate line -->
+  {%- assign year = post.date | date: "%Y" -%}
+  {%- if year or post.venue -%}
+    <div class="archive-year-venue" style="color:#555; margin-top:0.15rem;">
+      {%- if year -%}{{ year }}{%- endif -%}
+      {%- if year and post.venue -%}, {%- endif -%}
+      {%- if post.venue -%}<strong>{{ post.venue }}</strong>{%- endif -%}
     </div>
   {%- endif -%}
+
 
 
   {%- comment -%} Short description {%- endcomment -%}
