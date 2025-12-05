@@ -24,9 +24,7 @@ author:
   avatar           : "profile.png"
   name             : "Till Köveker"
   pronouns         : "he/his"  
-  bio              : "Research associate & Phd student<br>
-                      <a href="https://www.diw.de/en/"DIW Berlin</a><br>
-                      <a href="https://www.tu.berlin/en/"TU Berlin</a>"
+  bio              : "Research associate & Phd student"
   location         : #"Earth"
   employer         : #""
   uri              : # URL
