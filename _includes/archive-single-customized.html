@@ -32,14 +32,23 @@ Renders a publication/work item in the style of Johannes Brehm’s Google Sites:
   {%- endif -%}
 
   <!-- Year + bold journal/venue on separate line -->
-  {%- assign year = post.date | date: "%Y" -%}
-  {%- if year or post.venue -%}
-    <div class="archive-year-venue" style="color:#555; margin-top:0.15rem;">
-      {%- if year -%}{{ year }}{%- endif -%}
-      {%- if year and post.venue -%}, {%- endif -%}
-      {%- if post.venue -%}<strong>{{ post.venue }}</strong>{%- endif -%}
-    </div>
-  {%- endif -%}
+
+  
+{%- assign year = post.date | date: "%Y" -%}
+{% if year or post.venue %}
+  <div class="archive-year-venue" style="color:#555; margin-top:0.15rem;">
+    {% if year %}{{ year }}{% endif %}
+    {% if year and post.venue %}
+      {% capture sep %}, {% endcapture %}
+      {{ sep }}<strong>{{ post.venue }}</strong>
+    {% elsif post.venue %}
+      <strong>{{ post.venue }}</strong>
+    {% endif %}
+  </div>
+{% endif %}
+
+  
+
 
 
 
