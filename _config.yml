@@ -24,10 +24,7 @@ author:
   avatar           : "profile.png"
   name             : "Till Köveker"
   pronouns         : "he/his"  
-  bio              : |
-                    Research associate 
-                    PhD student
-                    [DIW Berlin](https://www.diw.de/)
+  bio              : PhD student & research associate @DIW Berlin & @TU Berlin
   location         : #"Earth"
   employer         : #""
   uri              : # URL
