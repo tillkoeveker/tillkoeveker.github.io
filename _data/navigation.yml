@@ -8,8 +8,8 @@ main:
   - title: "Research"
     url: /research/
 
-  - title: "Policy"
-    url: /policy/  
+  #- title: "Policy"
+  #  url: /policy/  
 
   #- title: "Talks"
   #  url: /talks/    
