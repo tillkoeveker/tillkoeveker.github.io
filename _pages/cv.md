@@ -9,4 +9,4 @@ published: true
 cvurl: 'http://tillkoeveker.github.io/files/CV.pdf'
 ---
 
-<p>You can download my CV here: <a href="{{ post.cvurl }}">Download CV</a></p>
+<p>You can download my CV <a href="http://tillkoeveker.github.io/files/CV.pdf">here</a>.</p>
