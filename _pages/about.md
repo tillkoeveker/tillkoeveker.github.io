@@ -11,6 +11,6 @@ I am a research associate in the Climate Policy Department at [DIW Berlin](https
 
 My research centers on environmental economics and climate policy with a focus on industrial decarbonization and the heat transition in the residential sector.
 
-I am at the [London School of Economics and Political Science](https://www.lse.ac.uk/) and [Grantham Research Institute on Climate Change and the Environment](https://www.lse.ac.uk/granthaminstitute/) as a visiting research student from January to April 2026.
+I am currently on a research visit at the [London School of Economics and Political Science](https://www.lse.ac.uk/) and [Grantham Research Institute on Climate Change and the Environment](https://www.lse.ac.uk/granthaminstitute/) January to April 2026.
 
 Please get in touch if you would like to chat about research or policy questions!
