@@ -10,8 +10,8 @@ status_note: ""             # leave blank if not needed
 paperurl: "https://www.nature.com/articles/s41558-023-01689-2"
 excerpt: ""
 #media_coverage:
-#  - name: "MDR"
-#    url: "https://mdr.de/article"
+#  name: ""
+#  url: ""
 ---
 
 
