@@ -4,7 +4,7 @@ collection: publications
 category: Publications
 permalink:
 date: 2025-01-01
-authors: "Behr, S. M., Köveker, T."
+authors: "Behr, S. M., <strong>Köveker, T.</strong>"
 venue: "DIW Weekly Report"
 status_note: ""
 paperurl: "https://www.diw.de/de/diw_01.c.953134.de/publikationen/weekly_reports/2025_20_1/non-monetary_factors_were_an_important_driver_of_residential_energy_savings_during_the_energy_crisis.html"

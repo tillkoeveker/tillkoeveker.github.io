@@ -4,7 +4,7 @@ collection: publications
 category: Publications
 permalink:
 date: 2024-01-01
-authors: "Behr, S. M., Köveker, T., Kücük, M."
+authors: "Behr, S. M., <strong>Köveker, T.</strong>, Kücük, M."
 venue: "DIW Weekly Report"
 status_note: ""
 paperurl: "https://www.diw.de/de/diw_01.c.924906.de/publikationen/weekly_reports/2024_45_1/heat_monitor_2023__despite_continued_price_increases__lower_decline_in_households____heating_energy_consumption.html"

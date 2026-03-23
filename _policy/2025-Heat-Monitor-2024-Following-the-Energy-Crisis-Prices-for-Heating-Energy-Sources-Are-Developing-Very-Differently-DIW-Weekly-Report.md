@@ -4,7 +4,7 @@ collection: publications
 category: Publications
 permalink:
 date: 2025-01-01
-authors: "Behr, S. M., Köveker, T."
+authors: "Behr, S. M., <strong>Köveker, T.</strong>"
 venue: "DIW Weekly Report"
 status_note: ""
 paperurl: "https://www.diw.de/de/diw_01.c.991231.de/publikationen/weekly_reports/2025_49_1/heat_monitor_2024__following_the_energy_crisis__prices_for_heating_energy_sources_are_developing_very_differently.html"
