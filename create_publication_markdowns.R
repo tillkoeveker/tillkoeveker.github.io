@@ -24,13 +24,19 @@ for (i in 1:nrow(pubs)) {
   
   row <- pubs[i, ]
   
-  # German link block
+  # Bold your name everywhere in authors
+  authors_fmt <- str_replace(row$`List authors`, "Köveker, T\\.", "<strong>Köveker, T.</strong>")
+  
+  # Abstract → excerpt field (fallback empty if missing)
+  excerpt_text <- ifelse(!is.na(row$Abstract), row$Abstract, "")
+  
+  # German link
   german_block <- ""
   if (!is.na(row$`Title German`) && !is.na(row$`Link German`)) {
     german_block <- paste0("\n\n[German version](", row$`Link German`, ")")
   }
   
-  # Choose YAML/front matter structure
+  # Choose YAML structure
   if (row$Type == "Journal" | row$Type == "Policy") {
     
     md <- c(
@@ -40,11 +46,11 @@ for (i in 1:nrow(pubs)) {
       'category: Publications',
       "permalink:",
       paste0("date: ", row$Year, "-01-01"),
-      paste0('authors: "', row$`List authors`, '"'),
+      paste0('authors: "', authors_fmt, '"'),
       paste0('venue: "', row$`Journal/Outlet`, '"'),
       'status_note: ""',
       paste0('paperurl: "', row$Link, '"'),
-      'excerpt: ""',
+      paste0('excerpt: "', excerpt_text, '"'),
       "---",
       german_block
     )
@@ -57,11 +63,11 @@ for (i in 1:nrow(pubs)) {
       'collection: publications',
       paste0("permalink: ", row$Link),
       paste0("date: ", row$Year, "-01-01"),
-      paste0('authors: "', row$`List authors`, '"'),
+      paste0('authors: "', authors_fmt, '"'),
       paste0('venue: "', row$`Journal/Outlet`, '"'),
       paste0('paperurl: "', row$Link, '"'),
       'category: "Working papers"',
-      'excerpt: ""',
+      paste0('excerpt: "', excerpt_text, '"'),
       "---",
       german_block
     )
@@ -69,7 +75,7 @@ for (i in 1:nrow(pubs)) {
     next
   }
   
-  # Create output filename
+  # Create filename
   filename <- make_filename(row$Year, row$Title, row$`Journal/Outlet`)
   
   # Select output folder
@@ -79,6 +85,6 @@ for (i in 1:nrow(pubs)) {
     outfile <- file.path(paste(main, "_publications", sep = "/"), filename)
   }
   
-  # Write markdown
+  # Write file
   writeLines(md, outfile)
 }
